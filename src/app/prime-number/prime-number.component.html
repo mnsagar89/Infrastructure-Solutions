@@ -1,0 +1,32 @@
+<form [formGroup]="myForm" class="ml-3">
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>From Value</mat-label>
+      <input matInput formControlName="from">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="ml-3">
+      <mat-label>To Value</mat-label>
+      <input matInput formControlName="to">
+    </mat-form-field>
+  </div>
+  <div>
+    <button class="btn btn-primary" type="submit" [disabled]="myForm.invalid" (click)="findPrime()" >
+      Find Prime's
+    </button>
+  </div>
+</form>
+<div class="ml-3 mt-3" *ngIf="myForm.valid">
+  <dl class="row">
+    <dt class="col-sm-3">Checking Primes from</dt>
+    <dt class="col-sm-6">{{myForm.getRawValue()['from']}} to {{myForm.getRawValue()['to']}}</dt>
+  </dl>
+  <dl class="row">
+    <dt class="col-sm-3">Prime Count:</dt>
+    <dt class="col-sm-6">{{count}}</dt>
+  </dl>
+  <dl class="row">
+    <dt class="col-sm-3">Run Time: </dt>
+    <dt class="col-sm-6">{{totalTime | number : '1.2-2'}} mS</dt>
+  </dl>
+</div>
+

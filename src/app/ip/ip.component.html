@@ -1,0 +1,15 @@
+<mat-form-field appearance="outline" class="ml-3">
+  <mat-label>Check IP</mat-label>
+  <input matInput [(ngModel)]="checkIPControl" #ctrl="ngModel" required>
+</mat-form-field>
+<div class="ml-3">
+  <button class="btn btn-primary" type="submit" (click)="checkIP(ctrl.value)" [disabled]="ctrl.invalid">
+    Check IP
+  </button>
+</div>
+<div *ngIf="ipValue" class="ml-3 mt-3">
+  <dl class="row" *ngFor="let item of ipValue | keyvalue">
+    <dt class="col-sm-3">{{item.key}}</dt>
+    <dd class="col-sm-9">{{item.value}}</dd>
+  </dl>
+</div>
